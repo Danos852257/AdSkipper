@@ -10,7 +10,8 @@
         "service_worker":"background.js"
     },
     "action":{
-        "default_icon":"gorlock_the_destroyer.jpg"
+        "default_popup":"popup.html",
+        "default_icon":"shrek.png"
     }
 
 }
