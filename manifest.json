@@ -1,0 +1,16 @@
+{
+    "manifest_version":3,
+    "name":"skibidi toilet",
+    "version":"1.0.0",
+    "description":"it will do something... probably",
+    "permissions":[
+
+    ],
+    "background":{
+        "service_worker":"background.js"
+    },
+    "action":{
+        "default_icon":"gorlock_the_destroyer.jpg"
+    }
+
+}
