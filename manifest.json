@@ -4,7 +4,7 @@
     "version":"1.0.0",
     "description":"it will do something... probably",
     "permissions":[
-
+        "activeTab", "https://www.youtube.com/" 
     ],
     "background":{
         "service_worker":"background.js"
@@ -12,6 +12,12 @@
     "action":{
         "default_popup":"popup.html",
         "default_icon":"shrek.png"
-    }
-
+    },
+    "content_scripts":[
+        {
+            "js":["content.js"],
+            "matches":["https://www.youtube.com/"]
+        }
+    ]
+    
 }
