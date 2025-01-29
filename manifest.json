@@ -3,8 +3,11 @@
     "name":"skibidi toilet",
     "version":"1.0.0",
     "description":"it will do something... probably",
-    "permissions":[
-        "activeTab", "https://www.youtube.com/" 
+    "permissions": [
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://www.youtube.com/*"
     ],
     "background":{
         "service_worker":"background.js"
@@ -16,7 +19,7 @@
     "content_scripts":[
         {
             "js":["content.js"],
-            "matches":["https://www.youtube.com/"]
+            "matches":["https://www.youtube.com/*"]
         }
     ],
     

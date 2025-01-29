@@ -7,3 +7,4 @@ var skipAd = function(D) {
     this.api.F1("onAdSkip"),
     this.api.onAdUxClicked(this.componentType, this.layoutId))
 }
+
