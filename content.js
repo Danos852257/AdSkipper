@@ -1,6 +1,25 @@
 const button = document.querySelector('.ytSearchboxComponentSearchButton');
 const searchBar = document.querySelector('.ytSearchboxComponentInput');
 
+
+const skipObserver = MutationObserver(() => {
+    const skipButton = document.querySelector('.ytp-skip-ad-button');
+    if(skipButton){
+        skipButton.dispatchEvent(new Event('click', {bubbles: true}));
+        console.log("skipButtonWasClicked");
+        skipObserver.disconnect();
+    }
+    
+
+})
+var clickSkipButton = function(){
+    if(skipButton){
+        skipButton.dispatchEvent(new Event('click', {bubbles: true}));
+    }
+    console.log("skipButtonWasClicked");
+}
+
+
 var search = function(word){
     if(searchBar){
         searchBar.click();
@@ -34,14 +53,17 @@ var searchButton = function(){
     }
 }
 
-if(true){
-    setTimeout(() => {
-        search("skibidi toilet");
-        setTimeout(searchButton, 490);
-    }, 5000);
-}
+// if(true){
+//     setTimeout(() => {
+//         search("skibidi toilet");
+//         setTimeout(searchButton, 490);
+//     }, 5000);
+// }
 
 button.addEventListener('click', () => {
     console.log("Button was actually clicked!");
     console.log(searchBar.value);
 });
+
+
+skipObserver.observe(document.body, { childList: true, subtree: true });
