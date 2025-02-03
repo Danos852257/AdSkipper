@@ -36,7 +36,7 @@ var searchButton = function(){
 
 if(true){
     setTimeout(() => {
-        search("mr beast");
+        search("skibidi toilet");
         setTimeout(searchButton, 490);
     }, 5000);
 }
@@ -45,4 +45,3 @@ button.addEventListener('click', () => {
     console.log("Button was actually clicked!");
     console.log(searchBar.value);
 });
-
