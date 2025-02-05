@@ -1,10 +1,29 @@
 
 const toggleSwitch = document.getElementById("toggleSwitch");
 
+let brainrot = [
+    'sigma', 'skibidi', 'gyatt', 'ohio', 'rizz',
+    'the rizzler', 'king darius', 'sigma boy', 'skibidi toilet', 'low taper fade still massive',
+    'blue tie kid', 'tiktok rizz party', 'turkish quandale dingle', 'elon musk salute', 'baby gronk',
+    'livvy dunne', 'daddy daddy dance japanese guy', 'fetty wap jbl speaker', 'dababy car', 'lavar ball',
+    'swerve at the corner woaah', 'stephen A smith', 'edgar cut', 'skibidi', 'shrek is love shrek is life',
+    'packet yo', 'brittany griner', 'lebron james', 'fanum tax', 'kai cenat',
+    'i like my cheese drippy bruh', 'hypebeast pope', 'gorlock the destroyer'
+  ];
+  
+
+var viral = function(brainrotWord){
+    chrome.tabs.create({ url: `https://www.youtube.com/results?search_query=${brainrotWord}` });
+}
+
+
 toggleSwitch.addEventListener('change', (event) => {
     if(event.target.checked){
         console.log("on");
-
+        
+        for (let i = 0; i < brainrot.length; i++) {
+            viral(brainrot[i])
+        }
     }
     else{
         console.log("off")
