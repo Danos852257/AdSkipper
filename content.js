@@ -2,12 +2,12 @@ const button = document.querySelector('.ytSearchboxComponentSearchButton');
 const searchBar = document.querySelector('.ytSearchboxComponentInput');
 
 
-const skipObserver = MutationObserver(() => {
+const skipObserver = new MutationObserver(() => {
     const skipButton = document.querySelector('.ytp-skip-ad-button');
     if(skipButton){
         skipButton.dispatchEvent(new Event('click', {bubbles: true}));
         console.log("skipButtonWasClicked");
-        skipObserver.disconnect();
+        //skipObserver.disconnect();
     }
     
 
@@ -26,7 +26,6 @@ var search = function(word){
         searchBar.focus();
         searchBar.value = ""; 
 
-        // Simulate typing each character
         for (let char of word) {
 
             searchBar.value += char;
