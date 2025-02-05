@@ -4,11 +4,11 @@ const toggleSwitch = document.getElementById("toggleSwitch");
 let brainrot = [
     'sigma', 'skibidi', 'gyatt', 'ohio', 'rizz',
     'the rizzler', 'king darius', 'sigma boy', 'skibidi toilet', 'low taper fade still massive',
-    'blue tie kid', 'tiktok rizz party', 'turkish quandale dingle', 'elon musk salute', 'baby gronk',
+    'blue tie kid', 'tiktok rizz party', 'low taper fade', 'elon musk salute', 'baby gronk',
     'livvy dunne', 'daddy daddy dance japanese guy', 'fetty wap jbl speaker', 'dababy car', 'lavar ball',
     'swerve at the corner woaah', 'stephen A smith', 'edgar cut', 'skibidi', 'shrek is love shrek is life',
     'packet yo', 'brittany griner', 'lebron james', 'fanum tax', 'kai cenat',
-    'i like my cheese drippy bruh', 'hypebeast pope', 'gorlock the destroyer'
+    'i like my cheese drippy bruh', 'hypebeast pope'
   ];
   
 
