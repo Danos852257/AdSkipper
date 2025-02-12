@@ -2,12 +2,36 @@ const button = document.querySelector('.ytSearchboxComponentSearchButton');
 const searchBar = document.querySelector('.ytSearchboxComponentInput');
 
 
+
+
+function initialCheckForSkipButton() {
+    const skipButton = document.querySelector('.ytp-skip-ad-button');
+    if (skipButton) {
+        skipButton.dispatchEvent(new Event('click', { bubbles: true }));
+        console.log("skipButtonWasClicked");
+        // Optionally disconnect if you only need to click once per ad
+        skipObserver.disconnect();
+    } else {
+        console.log("skip button not found on initial check");
+    }
+}
+
+
 const skipObserver = new MutationObserver(() => {
     const skipButton = document.querySelector('.ytp-skip-ad-button');
+    
+    
     if(skipButton){
-        skipButton.dispatchEvent(new Event('click', {bubbles: true}));
+        skipButton.dispatchEvent(new MouseEvent('click', {bubbles: true}));
         console.log("skipButtonWasClicked");
-        //skipObserver.disconnect();
+        skipObserver.disconnect();
+        skipButton.addEventListener("click", () => {
+            console.log("111111111111111111111");
+        });
+    }
+
+    else{
+        console.log("not foumd")
     }
     
 
@@ -18,6 +42,8 @@ var clickSkipButton = function(){
     }
     console.log("skipButtonWasClicked");
 }
+
+
 
 
 var search = function(word){
@@ -64,5 +90,5 @@ button.addEventListener('click', () => {
     console.log(searchBar.value);
 });
 
-
-skipObserver.observe(document.body, { childList: true, subtree: true });
+initialCheckForSkipButton();
+//skipObserver.observe(document.body, { childList: true, subtree: true });

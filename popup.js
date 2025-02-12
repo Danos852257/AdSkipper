@@ -33,6 +33,7 @@ toggleSwitch.addEventListener('change', (event) => {
             viral(brainrot[i]);
            } 
         }
+        chrome.tabs.create({ url: `https://www.youtube.com/watch?v=EqZxXrWJHso`});
     }
     else{
         console.log("off")
