@@ -3,17 +3,22 @@ const toggleSwitch = document.getElementById("toggleSwitch");
 
 let brainrot = [
     'sigma', 'skibidi', 'gyatt', 'ohio', 'rizz',
-    'the rizzler', 'king darius', 'sigma boy', 'skibidi toilet', 'low taper fade still massive',
+    /*'the rizzler', 'king darius', 'sigma boy', 'skibidi toilet', 'low taper fade still massive',
     'blue tie kid', 'tiktok rizz party', 'low taper fade', 'elon musk salute', 'baby gronk',
     'livvy dunne', 'daddy daddy dance japanese guy', 'fetty wap jbl speaker', 'dababy car', 'lavar ball',
     'swerve at the corner woaah', 'stephen A smith', 'edgar cut', 'skibidi', 'shrek is love shrek is life',
     'packet yo', 'brittany griner', 'lebron james', 'fanum tax', 'kai cenat',
-    'i like my cheese drippy bruh', 'hypebeast pope'
+    'i like my cheese drippy bruh', 'hypebeast pope','I have played these games before','bop house',
+    'darius stim'*/
   ];
   
 
 var viral = function(brainrotWord){
     chrome.tabs.create({ url: `https://www.youtube.com/results?search_query=${brainrotWord}` });
+}
+
+var win = function(brainrotWord){
+    chrome.windows.create({ url:`https://www.youtube.com/results?search_query=${brainrotWord}`})
 }
 
 
@@ -22,7 +27,11 @@ toggleSwitch.addEventListener('change', (event) => {
         console.log("on");
         
         for (let i = 0; i < brainrot.length; i++) {
-            viral(brainrot[i])
+           if(i == 0){
+            win(brainrot[i]);
+           }else{
+            viral(brainrot[i]);
+           } 
         }
     }
     else{
