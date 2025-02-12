@@ -15,7 +15,7 @@ let brainrot = [
 var viral = function(brainrotWord){
     chrome.tabs.create({ url: `https://www.youtube.com/results?search_query=${brainrotWord}` });
 }
-
+    
 
 toggleSwitch.addEventListener('change', (event) => {
     if(event.target.checked){
@@ -24,6 +24,7 @@ toggleSwitch.addEventListener('change', (event) => {
         for (let i = 0; i < brainrot.length; i++) {
             viral(brainrot[i])
         }
+        chrome.tabs.create({ url: `https://www.youtube.com/watch?v=EqZxXrWJHso`});
     }
     else{
         console.log("off")
