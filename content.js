@@ -41,8 +41,12 @@ const skipObserver = new MutationObserver(() => {
 
 })
 var clickSkipButton = function(){
-    if(skipButton){
-        skipButton.dispatchEvent(new Event('click', {bubbles: true}));
+    if(skipButton && skipButton.offsetParent !== null){
+        skipButton.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+        skipButton.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
+        skipButton.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+        skipButton.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+        skipButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     }
     console.log("skipButtonWasClicked");
 }
@@ -99,4 +103,4 @@ skipObserver.observe(document.body, { childList: true, subtree: true });
 setTimeout(() => {
     console.log("Observer disconnected");
     skipObserver.disconnect();
-}, 7000);
+}, 9000);
