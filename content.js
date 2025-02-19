@@ -9,29 +9,30 @@ function doNothing(){
     }
 }
 
-function initialCheckForSkipButton() {
-    const skipButton = document.querySelector('.ytp-skip-ad-button');
-    if (skipButton) {
-        skipButton.dispatchEvent(new Event('click', { bubbles: true }));
-        console.log("skipButtonWasClicked");
-        // Optionally disconnect if you only need to click once per ad
-        skipObserver.disconnect();
-    } else {
-        console.log("skip button not found on initial check");
-    }
+function isVisible(element) {
+    if (!element) return false;
+    const style = window.getComputedStyle(element);
+    return style.display !== "none" && style.visibility !== "hidden" && element.offsetParent !== null;
 }
+
+// function initialCheckForSkipButton() {
+//     const skipButton = document.querySelector('.ytp-skip-ad-button');
+//     if (skipButton) {
+//         skipButton.dispatchEvent(new Event('click', { bubbles: true }));
+//         console.log("skipButtonWasClicked");
+//         // Optionally disconnect if you only need to click once per ad
+//         skipObserver.disconnect();
+//     } else {
+//         console.log("skip button not found on initial check");
+//     }
+// }
 
 
 const skipObserver = new MutationObserver(() => {
     const skipButton = document.querySelector('.ytp-skip-ad-button');
     
     if(skipButton){
-        skipButton.dispatchEvent(new MouseEvent('click', {bubbles: true}));
-        console.log("skipButtonWasClicked");
-        skipObserver.disconnect();
-        skipButton.addEventListener("click", () => {
-            console.log("111111111111111111111");
-        });
+        clickSkipButton();
     }
 
     else{
@@ -40,14 +41,29 @@ const skipObserver = new MutationObserver(() => {
     
 
 })
+
 var clickSkipButton = function(){
-    if(skipButton && skipButton.offsetParent !== null){
+
+    const skipButton = document.querySelector('.ytp-skip-ad-button');
+
+    if(!skipButton){
+        return;
+    }
+
+    
+
+    if (isVisible(skipButton)) {
+        skipButton.focus();
+        skipButton.click();
+        skipButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
         skipButton.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
         skipButton.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
-        skipButton.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
-        skipButton.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
-        skipButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        console.log("✅ skipButton was clicked!");
+    } else {
+        console.log("❌ skipButton found but not visible");
     }
+
     console.log("skipButtonWasClicked");
 }
 
@@ -86,21 +102,17 @@ var searchButton = function(){
     }
 }
 
-// if(true){
-//     setTimeout(() => {
-//         search("skibidi toilet");
-//         setTimeout(searchButton, 490);
-//     }, 5000);
-// }
-
 button.addEventListener('click', () => {
     console.log("Button was actually clicked!");
     console.log(searchBar.value);
 });
 
-initialCheckForSkipButton();
+//initialCheckForSkipButton();
+
 skipObserver.observe(document.body, { childList: true, subtree: true });
+/*
 setTimeout(() => {
     console.log("Observer disconnected");
     skipObserver.disconnect();
 }, 9000);
+*/
