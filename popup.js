@@ -1,6 +1,7 @@
 
 const toggleSwitch = document.getElementById("toggleSwitch");
 
+
 let brainrot = [
     'sigma', 'skibidi', 'gyatt', 'ohio', 'rizz',
     /*'the rizzler', 'king darius', 'sigma boy', 'skibidi toilet', 'low taper fade still massive',
@@ -14,26 +15,22 @@ let brainrot = [
   
 
 var viral = function(brainrotWord){
-    chrome.tabs.create({ url: `https://www.youtube.com/results?search_query=${brainrotWord}` });
+    chrome.tabs.create({ url: `https://www.youtube.com/results?search_query=${brainrotWord}`});
 }
 
 var win = function(brainrotWord){
-    chrome.windows.create({ url:`https://www.youtube.com/results?search_query=${brainrotWord}`})
+    window.open({ url:`https://www.youtube.com/results?search_query=${brainrotWord}`}, "_blank", "height=400,width=300");
 }
 
 
 toggleSwitch.addEventListener('change', (event) => {
     if(event.target.checked){
         console.log("on");
-        
+
         for (let i = 0; i < brainrot.length; i++) {
-           if(i == 0){
-            win(brainrot[i]);
-           }else{
-            viral(brainrot[i]);
-           } 
+            win(brainrot[i])
         }
-        chrome.tabs.create({ url: `https://www.youtube.com/watch?v=EqZxXrWJHso`});
+        
     }
     else{
         console.log("off")

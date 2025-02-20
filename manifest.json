@@ -4,7 +4,7 @@
     "version":"1.0.0",
     "description":"it will do something... probably",
     "permissions": [
-        "https://www.youtube.com/*","tabs","windows"
+        "tabs","windows"
     ],
     "host_permissions": [
         "https://www.youtube.com/*"
