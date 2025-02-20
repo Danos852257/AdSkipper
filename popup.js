@@ -9,7 +9,7 @@ let brainrot = [
     'swerve at the corner woaah', 'stephen A smith', 'edgar cut', 'skibidi', 'shrek is love shrek is life',
     'packet yo', 'brittany griner', 'lebron james', 'fanum tax', 'kai cenat',
     'i like my cheese drippy bruh', 'hypebeast pope','I have played these games before','bop house',
-    'darius stim'*/
+    'darius stim', 'hawk tuah', 'talk tuah'*/
   ];
   
 
