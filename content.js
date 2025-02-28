@@ -15,6 +15,26 @@ function isVisible(element) {
     return style.display !== "none" && style.visibility !== "hidden" && element.offsetParent !== null;
 }
 
+
+function injectScript() {
+    const script = document.createElement('script');
+    script.textContent = `
+        (function() {
+            function clickSkipButton() {
+                const skipButton = document.querySelector('.ytp-skip-ad-button');
+                if (skipButton) {
+                    skipButton.click(); // Now it is trusted because it runs inside the page!
+                    console.log("✅ Skip button clicked successfully!");
+                } else {
+                    console.log("❌ Skip button not found");
+                }
+            }
+            setInterval(clickSkipButton, 1000); // Check every second
+        })();
+    `;
+    document.documentElement.appendChild(script);
+}
+
 // function initialCheckForSkipButton() {
 //     const skipButton = document.querySelector('.ytp-skip-ad-button');
 //     if (skipButton) {
