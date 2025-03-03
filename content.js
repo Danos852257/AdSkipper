@@ -18,20 +18,7 @@ function isVisible(element) {
 
 function injectScript() {
     const script = document.createElement('script');
-    script.textContent = `
-        (function() {
-            function clickSkipButton() {
-                const skipButton = document.querySelector('.ytp-skip-ad-button');
-                if (skipButton) {
-                    skipButton.click(); // Now it is trusted because it runs inside the page!
-                    console.log("✅ Skip button clicked successfully!");
-                } else {
-                    console.log("❌ Skip button not found");
-                }
-            }
-            setInterval(clickSkipButton, 1000); // Check every second
-        })();
-    `;
+    script.src = chrome.runtime.getURL('skipAdScript.js'); // Load an external script
     document.documentElement.appendChild(script);
 }
 
@@ -39,7 +26,7 @@ function injectScript() {
 //     const skipButton = document.querySelector('.ytp-skip-ad-button');
 //     if (skipButton) {
 //         skipButton.dispatchEvent(new Event('click', { bubbles: true }));
-//         console.log("skipButtonWasClicked");
+//         console.log("skipButtonWasClicked sigma");
 //         // Optionally disconnect if you only need to click once per ad
 //         skipObserver.disconnect();
 //     } else {
@@ -126,6 +113,9 @@ button.addEventListener('click', () => {
     console.log("Button was actually clicked!");
     console.log(searchBar.value);
 });
+
+
+injectScript();
 
 //initialCheckForSkipButton();
 
