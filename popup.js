@@ -19,18 +19,22 @@ var viral = function(brainrotWord){
 }
 
 var win = function(brainrotWord){
-    window.open({ url:`https://www.youtube.com/results?search_query=${brainrotWord}`}, "_blank", "height=400,width=300");
+    window.open(`https://www.youtube.com/results?search_query=${brainrotWord}`, "_blank", "height=400,width=300");
 }
 
 
 toggleSwitch.addEventListener('change', (event) => {
     if(event.target.checked){
-        console.log("on");
-
         for (let i = 0; i < brainrot.length; i++) {
-            win(brainrot[i])
+
+            win;
+            
+
+            setTimeout(() => {
+               win.close();
+               console.log("yur");
+            }, 1000);   
         }
-        
     }
     else{
         console.log("off")
