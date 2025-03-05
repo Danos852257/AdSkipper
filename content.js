@@ -3,6 +3,11 @@ const searchBar = document.querySelector('.ytSearchboxComponentInput');
 
 
 
+
+button.addEventListener("focus", function() {
+    console.log("Input field is focused!");
+});
+
 function doNothing(){
     while(true){
         break;
@@ -34,12 +39,19 @@ function injectScript() {
 //     }
 // }
 
-
+var i = 0;
 const skipObserver = new MutationObserver(() => {
     const skipButton = document.querySelector('.ytp-skip-ad-button');
     
     if(skipButton){
-        clickSkipButton();
+        //clickSkipButton();
+        if(i == 0){
+            console.log("1111111111111111111");
+            button.addEventListener("focus", function() {
+                console.log("Input field is focused!");
+            });
+        }
+        i++;
     }
 
     else{
@@ -49,7 +61,7 @@ const skipObserver = new MutationObserver(() => {
 
 })
 
-var clickSkipButton = function(){
+var clickSkipButton2 = function(){
 
     const skipButton = document.querySelector('.ytp-skip-ad-button');
 
