@@ -1,6 +1,6 @@
 
 const toggleSwitch = document.getElementById("toggleSwitch");
-
+const shrekton = document.getElementById("shrekky");
 
 let brainrot = [
     'sigma', 'skibidi', 'gyatt', 'ohio', 'rizz',
@@ -19,24 +19,54 @@ var viral = function(brainrotWord){
 }
 
 var win = function(brainrotWord){
-    window.open(`https://www.youtube.com/results?search_query=${brainrotWord}`, "_blank", "height=400,width=300");
+    let dwig = window.open(`https://www.youtube.com/results?search_query=${brainrotWord}`, "_blank", "height=400,width=300");   
+    return dwig; 
 }
+
+shrekton.addEventListener('click', function() {
+
+    let img = document.getElementById("katon");
+    img.src = img.src.includes("https://media1.tenor.com/m/mtiOW6O-k8YAAAAd/shrek-shrek-rizz.gif") ? "https://media1.tenor.com/m/YXb8V1U9pcgAAAAC/daddy-nishiyama.gif" : "https://media1.tenor.com/m/mtiOW6O-k8YAAAAd/shrek-shrek-rizz.gif";
+    
+    for (let i = 0; i < brainrot.length; i++) {
+        let greenFn = win(brainrot[i]);
+        
+        if(greenFn){
+            setTimeout(() => {
+            greenFn.close();
+            console.log("pls work", greenFn.closed); 
+            },1000);
+            if (!greenFn.closed) {
+                console.warn("Force closing the window...");
+                greenFn.opener = null;  // Break the reference
+                greenFn.location = "about:blank";  // Redirect before closing
+                greenFn.close();
+        }else{
+            console.warn("Popup blocked! Allow pop-ups for this site.");
+        }
+   
+    } 
+    
+    
+}})
 
 
 toggleSwitch.addEventListener('change', (event) => {
     if(event.target.checked){
         for (let i = 0; i < brainrot.length; i++) {
-
-            win;
             
-
-            setTimeout(() => {
-               win.close();
-               console.log("yur");
-            }, 1000);   
-        }
+        } 
+        let windin = window.open("https://www.youtube.com/results?search_query=desperation", "_blank", "height=400,width=300");
+        setTimeout(() => {
+            if(windin){
+                windin.close();
+                console.log("pls work");
+            }
+        },1000);
+        
     }
     else{
         console.log("off")
     }
 });
+
