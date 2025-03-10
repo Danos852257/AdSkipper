@@ -4,6 +4,7 @@
         const skipButton = document.querySelector('.ytp-skip-ad-button');
         if (skipButton) {
             skipButton.focus();
+            skipButton.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
             skipButton.click();
             skipButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
             console.log("Sigma");
