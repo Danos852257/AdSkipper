@@ -6,8 +6,18 @@
             skipButton.focus();
             skipButton.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
             skipButton.click();
-            skipButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-            console.log("Sigma");
+            skipButton.dispatchEvent(new PointerEvent('click', { bubbles: true }));
+            skipButton.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+            skipButton.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
+            /*const enterKeyEvent = new KeyboardEvent('keydown', {
+                key: 'Enter',
+                code: 'Enter',
+                keyCode: 13,
+                which: 13,
+                bubbles: true
+            });
+            skipButton.dispatchEvent(enterKeyEvent);
+            console.log("Sigma");*/
         } else {
             console.log("Womp");
         }
