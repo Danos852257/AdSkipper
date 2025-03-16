@@ -3,10 +3,11 @@ const searchBar = document.querySelector('.ytSearchboxComponentInput');
 
 
 
-
+/*
 button.addEventListener("focus", function() {
     console.log("Input field is focused!");
 });
+*/
 
 function doNothing(){
     while(true){
@@ -27,63 +28,21 @@ function injectScript() {
     document.documentElement.appendChild(script);
 }
 
-// function initialCheckForSkipButton() {
-//     const skipButton = document.querySelector('.ytp-skip-ad-button');
-//     if (skipButton) {
-//         skipButton.dispatchEvent(new Event('click', { bubbles: true }));
-//         console.log("skipButtonWasClicked sigma");
-//         // Optionally disconnect if you only need to click once per ad
-//         skipObserver.disconnect();
-//     } else {
-//         console.log("skip button not found on initial check");
-//     }
-// }
 
-var i = 0;
-const skipObserver = new MutationObserver(() => {
-    const skipButton = document.querySelector('.ytp-skip-ad-button');
-    
-    if(skipButton){
-        //clickSkipButton();
-        if(i == 0){
-            console.log("1111111111111111111");
-            button.addEventListener("focus", function() {
-                console.log("Input field is focused!");
-            });
-        }
-        i++;
-    }
-
-    else{
-        doNothing();
-    }
-    
-
-})
-
-var clickSkipButton2 = function(){
-
-    const skipButton = document.querySelector('.ytp-skip-ad-button');
-
-    if(!skipButton){
-        return;
-    }
-
-    
-
-    if (isVisible(skipButton)) {
-        skipButton.focus();
-        skipButton.click();
-        skipButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-
-        skipButton.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
-        skipButton.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
-        console.log("✅ skipButton was clicked!");
-    } else {
-        console.log("❌ skipButton found but not visible");
-    }
-
-    console.log("skipButtonWasClicked");
+function ninja(){
+    console.log("99999999999999999999");
+    setTimeout(() => {
+        console.log("Observer disconnected");
+        /*const enterKeyEvent = new KeyboardEvent('keydown', {
+            key: 'Enter',
+            code: 'Enter',
+            keyCode: 13,
+            which: 13,
+            bubbles: true
+        });*/
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', keyCode: 13, which: 13,bubbles: true }));
+        document.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', code: 'Enter', keyCode: 13, which: 13,bubbles: true }));
+    }, 9000);
 }
 
 
@@ -127,14 +86,9 @@ button.addEventListener('click', () => {
 });
 
 
+
+
+
 injectScript();
 
-//initialCheckForSkipButton();
-
-skipObserver.observe(document.body, { childList: true, subtree: true });
-/*
-setTimeout(() => {
-    console.log("Observer disconnected");
-    skipObserver.disconnect();
-}, 9000);
-*/
+ninja();
