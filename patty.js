@@ -1,3 +1,7 @@
+//Copied the code that youtube uses to skip ads
+//Originally planning on using this but it was not understandable
+//So we used other methods
+
 var skipAd = function(D) {
     D && D.preventDefault();
     var O, h;

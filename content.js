@@ -1,119 +1,55 @@
 const button = document.querySelector('.ytSearchboxComponentSearchButton');
 const searchBar = document.querySelector('.ytSearchboxComponentInput');
 
-
-
-
-button.addEventListener("focus", function() {
-    console.log("Input field is focused!");
-});
-
+//does nothing
 function doNothing(){
     while(true){
         break;
     }
 }
 
+//checks if an element is visible (not used)
 function isVisible(element) {
     if (!element) return false;
     const style = window.getComputedStyle(element);
     return style.display !== "none" && style.visibility !== "hidden" && element.offsetParent !== null;
 }
 
-
+//injects the script from skipAdScript.js into Youtube's DOM
 function injectScript() {
     const script = document.createElement('script');
-    script.src = chrome.runtime.getURL('skipAdScript.js'); // Load an external script
+    script.src = chrome.runtime.getURL('skipAdScript.js');
     document.documentElement.appendChild(script);
 }
 
-// function initialCheckForSkipButton() {
-//     const skipButton = document.querySelector('.ytp-skip-ad-button');
-//     if (skipButton) {
-//         skipButton.dispatchEvent(new Event('click', { bubbles: true }));
-//         console.log("skipButtonWasClicked sigma");
-//         // Optionally disconnect if you only need to click once per ad
-//         skipObserver.disconnect();
-//     } else {
-//         console.log("skip button not found on initial check");
-//     }
-// }
-
-var i = 0;
-const skipObserver = new MutationObserver(() => {
-    const skipButton = document.querySelector('.ytp-skip-ad-button');
-    
-    if(skipButton){
-        //clickSkipButton();
-        if(i == 0){
-            console.log("1111111111111111111");
-            button.addEventListener("focus", function() {
-                console.log("Input field is focused!");
-            });
-        }
-        i++;
-    }
-
-    else{
-        doNothing();
-    }
-    
-
-})
-
-var clickSkipButton2 = function(){
-
-    const skipButton = document.querySelector('.ytp-skip-ad-button');
-
-    if(!skipButton){
-        return;
-    }
-
-    
-
-    if (isVisible(skipButton)) {
-        skipButton.focus();
-        skipButton.click();
-        skipButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-
-        skipButton.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
-        skipButton.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
-        console.log("✅ skipButton was clicked!");
-    } else {
-        console.log("❌ skipButton found but not visible");
-    }
-
-    console.log("skipButtonWasClicked");
-}
-
-
-
-
+//test function from before - technically still works but functionality replaced by popup.js
 var search = function(word){
     if(searchBar){
+        //clicks on the search bar
         searchBar.click();
         searchBar.focus();
         searchBar.value = ""; 
 
+        //types in each letter one at a time
         for (let char of word) {
 
             searchBar.value += char;
             let eventOptions = { bubbles: true, cancelable: true, key: char, char: char };
 
             console.log(eventOptions);
-            // Simulate real keyboard events
             searchBar.dispatchEvent(new KeyboardEvent("keydown", eventOptions));
-            //searchBar.dispatchEvent(new KeyboardEvent("keypress", eventOptions));
             searchBar.dispatchEvent(new KeyboardEvent("keyup", eventOptions));
         }
-        //searchBar.value = (word)
 
+        //waits until done typing
         searchBar.dispatchEvent(new Event('input', { bubbles: true }));
         searchBar.dispatchEvent(new Event('change', { bubbles: true }));
         console.log("searcbar works")
     }
 }
 
+
+//clicks on the search button (also obsolete)
 var searchButton = function(){
     if (button) {
         button.dispatchEvent(new Event('click', { bubbles: true }));
@@ -121,20 +57,12 @@ var searchButton = function(){
     }
 }
 
+
+//test event listener to see if the skipAdButton was being clicked
 button.addEventListener('click', () => {
     console.log("Button was actually clicked!");
     console.log(searchBar.value);
 });
 
-
+//Calls injectScript()
 injectScript();
-
-//initialCheckForSkipButton();
-
-skipObserver.observe(document.body, { childList: true, subtree: true });
-/*
-setTimeout(() => {
-    console.log("Observer disconnected");
-    skipObserver.disconnect();
-}, 9000);
-*/
